@@ -9,7 +9,7 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-const SEARCH = 'РОБЛОКС';
+const SEARCH = 'майнкрафт';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -157,6 +157,11 @@ async function getDataSubes(){
 						datayt[subSub] = date.getTime();
 						fs.writeFile('datayt.json', JSON.stringify(datayt), _ => console.log('*Подписка №' + count + ' на канал: ' + chanel));
 						count++;
+						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+					}else{
+						await page.waitFor(1 * 1000);
+						sec++;
+						console.log('*Уже был подписан на этот канал!!!');
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}
 				}else{
