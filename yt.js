@@ -9,10 +9,10 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-// const SEARCH = 'РОБЛОКС';
+const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-const SEARCH = 'Егор';
+// const SEARCH = 'Егор';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -101,6 +101,7 @@ async function getDataSubes(){
 	console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 
 	for (let index = 1; index < 10000; index++) {
+		
 		let rayon = await page.evaluate((sel) => {
 			let rayonText = document.querySelector(sel);
 	
@@ -168,6 +169,7 @@ async function getDataSubes(){
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}
 				}else{
+					await page.click('paper-dialog .yt-simple-endpoint');
 					await page.waitFor(1 * 1000);
 					sec++;
 					console.log('****Внимание закончен лимит подписок!****');
@@ -202,7 +204,18 @@ async function getDataSubes(){
 
 			if(datayt[sub] != undefined && sub != 1){
 				if(datayt[sub] != 333){
-					if(datayt[sub]/1000 + 864000 <= date.getTime()/1000) {
+					if(datayt[sub]/1000 + 259200 <= date.getTime()/1000) {
+
+						let removeMes = await page.evaluate((sel) => {
+							let removeItem = document.querySelector(sel);
+					
+							if(!removeItem){
+								return false;
+							}else{
+								removeItem.remove();
+							}
+						}, 'iron-dropdown');
+
 						await page.waitFor(1000);
 						sec++;
 						await page.click(CONTENT_SELECTOR.replace('INDEX',index) + ' ytd-subscribe-button-renderer > paper-button');
@@ -210,7 +223,7 @@ async function getDataSubes(){
 						sec++;
 						await page.click('#confirm-button');
 						await page.waitFor(1000);
-						datayt[sub] = date.getTime() + 25920000000;
+						datayt[sub] = date.getTime() + 7776000000;
 						fs.writeFile('datayt.json', JSON.stringify(datayt), _ => console.log('*Отписался от пользователя: ' + chanel));
 						sec++;
 						await page.waitFor(1000);
@@ -218,8 +231,8 @@ async function getDataSubes(){
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}else{
 
-						let subOverDay = Math.floor(( datayt[sub]/1000 + 864000 - date.getTime()/1000 )/86400);
-						let subOverHor = Math.floor(( datayt[sub]/1000 + 864000 - date.getTime()/1000 )%86400/3600);
+						let subOverDay = Math.floor(( datayt[sub]/1000 + 259200 - date.getTime()/1000 )/86400);
+						let subOverHor = Math.floor(( datayt[sub]/1000 + 259200 - date.getTime()/1000 )%86400/3600);
 						console.log('*Подписка на: ' + chanel + ' - Закончиться через ' + subOverDay + ' дн. ' + subOverHor + ' ч.');
 						await page.waitFor(1000);
 						sec++;
@@ -246,10 +259,22 @@ async function getDataSubes(){
 			}
 		}, 'iron-dropdown');
 
+		let removePaper = await page.evaluate((sel) => {
+			let removeItem = document.querySelector(sel);
+	
+			if(!removeItem){
+				return false;
+			}else{
+				removeItem.remove();
+			}
+		}, 'paper-dialog');
+
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
+
+		paper = false;
 	
 	}
 }
