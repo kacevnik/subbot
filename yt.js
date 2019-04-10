@@ -174,11 +174,19 @@ async function getDataSubes(){
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}
 				}else{
-					await page.click('paper-dialog .yt-simple-endpoint');
-					await page.waitFor(1 * 1000);
-					sec++;
-					console.log('****Внимание закончен лимит подписок!****');
-					console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+					try {
+						await page.click('paper-dialog .yt-simple-endpoint');
+						await page.waitFor(1 * 1000);
+						sec++;
+						console.log('****Внимание закончен лимит подписок!****');
+						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+					} catch (error) {
+						await page.waitFor(1 * 1000);
+						sec++;
+						console.log('****Внимание закончен лимит подписок!****');
+						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+						continue;
+					}
 				}
 			}
 		}
