@@ -121,9 +121,14 @@ async function getDataSubes(){
 			let paparItem = document.querySelector(sel);
 	
 			if(!paparItem){
-				return false;
+				return 1;
 			}else{
-				return true
+				let paparItemText = paparItem.innerHTML;
+				if(paparItemText.search(/Отменить подписку на канал/gi) != -1) {
+					return 2;
+				}else{
+					return 3;
+				}
 			}
 		}, 'paper-dialog');
 
@@ -152,7 +157,7 @@ async function getDataSubes(){
 			}, CONTENT_SELECTOR.replace('INDEX',index) + '>a');
 
 			if(subSub != 1){
-				if(!paper){
+				if(paper == 1 || paper == 2){
 					if(datayt[subSub] == undefined || datayt[subSub] <= date.getTime() ){
 						await page.click(CONTENT_SELECTOR.replace('INDEX',index) + ' ytd-subscribe-button-renderer > paper-button');
 						timer = getRandomInt(3, 5);
@@ -221,14 +226,20 @@ async function getDataSubes(){
 						await page.click(CONTENT_SELECTOR.replace('INDEX',index) + ' ytd-subscribe-button-renderer > paper-button');
 						await page.waitFor(1000);
 						sec++;
-						await page.click('#confirm-button');
-						await page.waitFor(1000);
-						datayt[sub] = date.getTime() + 7776000000;
-						fs.writeFile('datayt.json', JSON.stringify(datayt), _ => console.log('*Отписался от пользователя: ' + chanel));
-						sec++;
-						await page.waitFor(1000);
-						sec++;
-						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+						try {
+							await page.click('#confirm-button');
+							await page.waitFor(1000);
+							datayt[sub] = date.getTime() + 7776000000;
+							fs.writeFile('datayt.json', JSON.stringify(datayt), _ => console.log('*Отписался от пользователя: ' + chanel));
+							sec++;
+							await page.waitFor(1000);
+							sec++;
+							console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
+						} catch (error) {
+							console.log(error.name);
+							continue;
+						}
+
 					}else{
 
 						let subOverDay = Math.floor(( datayt[sub]/1000 + 259200 - date.getTime()/1000 )/86400);
@@ -249,25 +260,15 @@ async function getDataSubes(){
 
 		}
 
-		let remove = await page.evaluate((sel) => {
-			let removeItem = document.querySelector(sel);
+		// let remove = await page.evaluate((sel) => {
+		// 	let removeItem = document.querySelector(sel);
 	
-			if(!removeItem){
-				return false;
-			}else{
-				removeItem.remove();
-			}
-		}, 'iron-dropdown');
-
-		let removePaper = await page.evaluate((sel) => {
-			let removeItem = document.querySelector(sel);
-	
-			if(!removeItem){
-				return false;
-			}else{
-				removeItem.remove();
-			}
-		}, 'paper-dialog');
+		// 	if(!removeItem){
+		// 		return false;
+		// 	}else{
+		// 		removeItem.remove();
+		// 	}
+		// }, 'iron-dropdown');
 
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
