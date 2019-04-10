@@ -9,10 +9,10 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-const SEARCH = 'РОБЛОКС';
+// const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-// const SEARCH = 'Егор';
+const SEARCH = 'Егор';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -268,15 +268,15 @@ async function getDataSubes(){
 
 		}
 
-		// let remove = await page.evaluate((sel) => {
-		// 	let removeItem = document.querySelector(sel);
+		let remove = await page.evaluate((sel) => {
+			let removeItem = document.querySelector(sel);
 	
-		// 	if(!removeItem){
-		// 		return false;
-		// 	}else{
-		// 		removeItem.remove();
-		// 	}
-		// }, 'iron-dropdown');
+			if(!removeItem){
+				return false;
+			}else{
+				removeItem.remove();
+			}
+		}, 'iron-dropdown');
 
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
