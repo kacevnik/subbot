@@ -9,10 +9,10 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-const SEARCH = 'РОБЛОКС';
+// const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-// const SEARCH = 'Егор';
+const SEARCH = 'Егор';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -217,7 +217,7 @@ async function getDataSubes(){
 
 			if(datayt[sub] != undefined && sub != 1){
 				if(datayt[sub] != 333){
-					if(datayt[sub]/1000 + 259200 <= date.getTime()/1000) {
+					if(datayt[sub]/1000 + 172800 <= date.getTime()/1000) {
 
 						let removeMes = await page.evaluate((sel) => {
 							let removeItem = document.querySelector(sel);
@@ -250,8 +250,8 @@ async function getDataSubes(){
 
 					}else{
 
-						let subOverDay = Math.floor(( datayt[sub]/1000 + 259200 - date.getTime()/1000 )/86400);
-						let subOverHor = Math.floor(( datayt[sub]/1000 + 259200 - date.getTime()/1000 )%86400/3600);
+						let subOverDay = Math.floor(( datayt[sub]/1000 + 172800 - date.getTime()/1000 )/86400);
+						let subOverHor = Math.floor(( datayt[sub]/1000 + 172800 - date.getTime()/1000 )%86400/3600);
 						console.log('*Подписка на: ' + chanel + ' - Закончиться через ' + subOverDay + ' дн. ' + subOverHor + ' ч.');
 						await page.waitFor(1000);
 						sec++;
