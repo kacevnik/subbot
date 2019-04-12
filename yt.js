@@ -9,10 +9,10 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-// const SEARCH = 'РОБЛОКС';
+const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-const SEARCH = 'Егор';
+// const SEARCH = 'Егор';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
