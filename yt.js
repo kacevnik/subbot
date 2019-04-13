@@ -12,8 +12,8 @@ const PASS   = 'G9564665g';
 // const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-const SEARCH = 'летсплей';
-// const SEARCH = 'Егор';
+// const SEARCH = 'летсплей';
+const SEARCH = 'Егор';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
