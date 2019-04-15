@@ -169,8 +169,8 @@ async function getDataSubes(){
 						count++;
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}else{
-						await page.waitFor(1 * 1000);
-						sec++;
+						await page.waitFor(300);
+						sec = sec + 0.3;
 						console.log('*Уже был подписан на этот канал!!!');
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}
