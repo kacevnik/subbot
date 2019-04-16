@@ -255,8 +255,8 @@ async function getDataSubes(){
 						let subOverDay = Math.floor(( datayt[sub]/1000 + 172800 - date.getTime()/1000 )/86400);
 						let subOverHor = Math.floor(( datayt[sub]/1000 + 172800 - date.getTime()/1000 )%86400/3600);
 						console.log('*Подписка на: ' + chanel + ' - Закончиться через ' + subOverDay + ' дн. ' + subOverHor + ' ч.');
-						await page.waitFor(1000);
-						sec++;
+						await page.waitFor(300);
+						sec = sec + 0.3;
 						console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 					}
 				}
