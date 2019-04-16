@@ -9,11 +9,12 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
-const SEARCH = 'РОБЛОКС';
+// const SEARCH = 'РОБЛОКС';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
-// const SEARCH = 'летсплей';
+const SEARCH = 'летсплей';
 // const SEARCH = 'Егор';
+// const SEARCH = 'Женя';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -279,6 +280,7 @@ async function getDataSubes(){
 			}
 		}, 'iron-dropdown');
 
+		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
 		await page.keyboard.press('ArrowDown');
