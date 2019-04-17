@@ -10,10 +10,10 @@ console.log('/___/___/ \\______/ \\______//___/___//_______//______/ \\______/')
 const EMAIL  = 'kacevnik@gmail.com';
 const PASS   = 'G9564665g';
 // const SEARCH = 'РОБЛОКС';
-const SEARCH = 'Roblox';
+// const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
 // const SEARCH = 'летсплей';
-// const SEARCH = 'Егор';
+const SEARCH = 'Егор';
 // const SEARCH = 'Женя';
 const URL    = 'https://youtube.com';
 
@@ -86,13 +86,13 @@ async function getDataSubes(){
 	sec = sec + 10;
 	console.log('----------------- ' + getTimeScript (sec) + ' ------------------');
 
-	await page.click('#container ytd-toggle-button-renderer a');
+	await page.click('#container.ytd-search-sub-menu-renderer ytd-toggle-button-renderer a');
 	await page.waitFor(1000);
 
 	await page.click(`[title='С фильтром "Каналы"']`);
 	await page.waitFor(1000);
 
-	await page.click('#container ytd-toggle-button-renderer a');
+	await page.click('#container.ytd-search-sub-menu-renderer ytd-toggle-button-renderer a');
 	await page.waitFor(1000);
 
 	await page.click(`[title="Упорядочить по дате загрузки"]`);
