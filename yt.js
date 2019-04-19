@@ -13,8 +13,9 @@ const PASS   = 'G9564665g';
 // const SEARCH = 'Roblox';
 // const SEARCH = 'Майнкрафт';
 // const SEARCH = 'летсплей';
-const SEARCH = 'Егор';
-// const SEARCH = 'Женя';
+// const SEARCH = 'Егор';
+// const SEARCH = 'Артем';
+const SEARCH = 'Женя';
 const URL    = 'https://youtube.com';
 
 let sec = 0;
@@ -164,7 +165,7 @@ async function getDataSubes(){
 						await page.click(CONTENT_SELECTOR.replace('INDEX',index) + ' ytd-subscribe-button-renderer > paper-button');
 						timer = getRandomInt(3, 5);
 						await page.waitFor(timer * 1000);
-						sec = sec + timer
+						sec = sec + timer;
 						datayt[subSub] = date.getTime();
 						fs.writeFile('datayt.json', JSON.stringify(datayt), _ => console.log('*Подписка №' + count + ' на канал: ' + chanel));
 						count++;
